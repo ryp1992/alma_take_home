@@ -3,33 +3,11 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
-
 import csv
-from sortedcontainers import SortedList
-
-
-
-class ConferenceBookingSystem:
-
-    def __init__(self):
-        self.booked_intervals = SortedList()
-
-    # Time Complexity O(LogN if list size in N)
-    def book(self, start, end):
-        idx = self.booked_intervals.bisect_right((start, end))
-        if (idx > 0 and self.booked_intervals[idx - 1][1] > start) or (
-                idx < len(self.booked_intervals) and self.booked_intervals[idx][0] < end):
-            return False
-        self.booked_intervals.add((start, end))
-        return True
-
-    def remove_interval(self, start, end):
-        self.booked_intervals.remove((start, end))
-
-
+import conferenceBookingSystem
 
 def read_csv_file(file_path):
-    room_booking = ConferenceBookingSystem()
+    room_booking = conferenceBookingSystem.ConferenceBookingSystem()
     rows = {}
     row_index = 0
     try:
@@ -57,9 +35,9 @@ def read_csv_file(file_path):
         print(f"An error occurred: {str(e)}")
 
 
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     file_path = "takeHomeExamInput - Sheet1.csv"
     read_csv_file(file_path)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
