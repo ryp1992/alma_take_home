@@ -1,5 +1,7 @@
 import unittest
 import conferenceBookingSystem
+import coverage
+
 
 
 class ConferenceBookingSystemTestFunction(unittest.TestCase):
@@ -18,4 +20,9 @@ class ConferenceBookingSystemTestFunction(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    cov = coverage.Coverage()
+    cov.start()
     unittest.main()
+    cov.stop()
+    cov.report()
+
